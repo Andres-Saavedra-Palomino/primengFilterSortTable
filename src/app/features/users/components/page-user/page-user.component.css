@@ -1,0 +1,11 @@
+.page-bg {
+  background-color: #eee;
+}
+.page {
+  background-color: #e0e0e0;
+  padding: 20px 15px;
+}
+.user-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
