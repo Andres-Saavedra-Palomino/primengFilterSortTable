@@ -9,3 +9,7 @@
   border-radius: 8px;
   overflow: hidden;
 }
+
+:host ::ng-deep .gris > th {
+  background-color: #e0e0e0 !important;
+}

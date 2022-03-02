@@ -2,3 +2,6 @@
 * {
   font-family: "Montserrat";
 }
+tr .mystyle > th {
+  background-color: #ffaaaa;
+}

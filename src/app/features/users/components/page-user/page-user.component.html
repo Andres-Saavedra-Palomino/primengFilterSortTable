@@ -25,7 +25,7 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       >
         <ng-template pTemplate="header">
-          <tr>
+          <tr [ngClass]="{ gris: true }">
             <th style="width: 3rem"></th>
             <th></th>
             <th pSortableColumn="username">
@@ -40,11 +40,11 @@
             <th pSortableColumn="cellphoneNumber">
               Celular<p-sortIcon field="cellphoneNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="status">
-              Estado<p-sortIcon field="status"></p-sortIcon>
+            <th pSortableColumn="status.id">
+              Estado<p-sortIcon field="status.id"></p-sortIcon>
             </th>
           </tr>
-          <tr>
+          <tr [ngClass]="{ gris: true }">
             <th style="width: 3rem">
               <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
@@ -63,12 +63,25 @@
               ></p-columnFilter>
             </th>
             <th>
-              <p-columnFilter field="status" matchMode="in" [showMenu]="false">
-                <ng-template
-                  pTemplate="filter"
-                  let-value
-                  let-filter="filterCallback"
-                >
+              <p-columnFilter
+                field="status.id"
+                matchMode="in"
+                [showMenu]="false"
+              >
+                <ng-template pTemplate="filter" let-filter="filterCallback">
+                  <p-multiSelect
+                    [options]="listado_status"
+                    placeholder="Estados"
+                    (onChange)="filter($event.value)"
+                    optionLabel="alias"
+                    optionValue="id"
+                  >
+                    <ng-template let-status pTemplate="item">
+                      <div class="p-multiselect-status-option">
+                        <span class="ml-1">{{ status.alias }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiSelect>
                 </ng-template>
               </p-columnFilter>
             </th>
@@ -84,7 +97,7 @@
             <td>{{ user.fullname }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.cellphoneNumber }}</td>
-            <td>{{ user.status.id }}</td>
+            <td pngIconStatus [statusId]="user.status.id"></td>
           </tr>
         </ng-template>
       </p-table>

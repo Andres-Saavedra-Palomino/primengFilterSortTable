@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { pipe, take } from 'rxjs';
+import { StatusService } from 'src/app/services/status.service';
 import { UsersService } from 'src/app/services/users.service';
+import { Status } from '../../models/status.model';
 import { User } from '../../models/user.model';
 @Component({
   selector: 'png-page-user',
@@ -9,12 +11,18 @@ import { User } from '../../models/user.model';
 })
 export class PageUserComponent implements OnInit {
   lista_usuarios: User[];
+  listado_status: Status[];
   selectAll!: boolean;
   selectedUsers: User[] = [];
   totalRecords: number;
-  constructor(private readonly usersService: UsersService) {
+
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly statusService: StatusService
+  ) {
     this.lista_usuarios = this.usersService._lista_usuarios;
     this.totalRecords = usersService._lista_usuarios.length;
+    this.listado_status = this.statusService._lista_status;
   }
 
   ngOnInit(): void {}
