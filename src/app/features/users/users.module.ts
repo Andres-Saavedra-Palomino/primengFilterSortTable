@@ -9,7 +9,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { PageUserComponent } from './components/page-user/page-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'src/app/shared/toast/toast.module';
 
 @NgModule({
   declarations: [PageUserComponent, ViewUserComponent],
@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     MultiSelectModule,
     UsersRoutingModule,
     SharedModule,
+    ToastModule,
   ],
 })
 export class UsersModule {}

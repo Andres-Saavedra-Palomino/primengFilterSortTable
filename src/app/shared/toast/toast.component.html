@@ -1,0 +1,15 @@
+<p-toast
+  [position]="position"
+  [key]="key"
+  (onClose)="onReject()"
+  [baseZIndex]="5000"
+>
+  <ng-template let-message pTemplate="message">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <i class="pi pi-check" style="font-size: 3rem"></i>&nbsp;
+      <span style="font-weight: bold">{{ message.summary }}</span
+      >&nbsp;
+      <span> {{ message.detail }}</span>
+    </div>
+  </ng-template>
+</p-toast>
