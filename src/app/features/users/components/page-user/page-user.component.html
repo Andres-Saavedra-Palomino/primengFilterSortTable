@@ -8,13 +8,12 @@
       class="p-button-secondary"
       icon="pi pi-trash"
       label="Cancelar"
-      (click)="showToast()"
+      (click)="showDialog('Agregar Usuario')"
     ></button>
 
     <div class="user-table">
       <p-table
         [value]="lista_usuarios"
-        responsiveLayout="scroll"
         dataKey="username"
         [selection]="selectedUsers"
         (selectionChange)="onSelectionChange($event)"

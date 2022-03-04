@@ -1,13 +1,12 @@
 .page-bg {
   background-color: #eee;
+  height: calc(100vh - 47px);
+  width: 100%;
 }
 .page {
   background-color: #e0e0e0;
   padding: 20px 15px;
-}
-.user-table {
-  border-radius: 8px;
-  overflow: hidden;
+  height: 100%;
 }
 
 :host ::ng-deep .gris > th {

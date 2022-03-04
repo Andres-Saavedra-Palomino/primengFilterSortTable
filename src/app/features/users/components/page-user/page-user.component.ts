@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Message, MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { pipe, take } from 'rxjs';
 import { StatusService } from 'src/app/services/status.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Status } from '../../models/status.model';
 import { User } from '../../models/user.model';
+import { ViewUserComponent } from '../view-user/view-user.component';
 @Component({
   selector: 'png-page-user',
   templateUrl: './page-user.component.html',
   styleUrls: ['./page-user.component.css'],
-  providers: [MessageService],
+  providers: [MessageService, DialogService],
 })
 export class PageUserComponent {
   lista_usuarios: User[];
@@ -32,7 +34,8 @@ export class PageUserComponent {
   constructor(
     private readonly usersService: UsersService,
     private readonly statusService: StatusService,
-    private readonly messageService: MessageService
+    private readonly messageService: MessageService,
+    private readonly dialogService: DialogService
   ) {
     this.lista_usuarios = this.usersService._lista_usuarios;
     this.totalRecords = usersService._lista_usuarios.length;
@@ -41,6 +44,10 @@ export class PageUserComponent {
 
   showToast() {
     this.messageService.add(this.msg);
+  }
+
+  showDialog(title: string) {
+    this.dialogService.open(ViewUserComponent, { header: title, width: '70%' });
   }
   onSelectionChange(event: User[]) {
     this.selectAll = event.length === this.totalRecords;

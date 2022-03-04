@@ -10,11 +10,17 @@ import { PageUserComponent } from './components/page-user/page-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastModule } from 'src/app/shared/toast/toast.module';
+import { InputTextModule } from 'primeng/inputtext';
+import { StepsModule } from 'primeng/steps';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FormInfoUserComponent } from './components/form-info-user/form-info-user.component';
 
 @NgModule({
-  declarations: [PageUserComponent, ViewUserComponent],
+  declarations: [PageUserComponent, ViewUserComponent, FormInfoUserComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RippleModule,
     TableModule,
     ButtonModule,
@@ -22,6 +28,9 @@ import { ToastModule } from 'src/app/shared/toast/toast.module';
     UsersRoutingModule,
     SharedModule,
     ToastModule,
+    InputTextModule,
+    StepsModule,
+    DynamicDialogModule,
   ],
 })
 export class UsersModule {}
